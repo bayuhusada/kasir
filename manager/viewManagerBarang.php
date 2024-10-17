@@ -17,8 +17,9 @@
             				<a href="manager/export.php" name="export" class="btn btn-success" target="_blank">Export Excel</a>
         					<a href="manager/databarangfull.php" target="_blank" class="btn btn-info">Print</a>
             			</div>
-            			<div class="card-body">
-            				<table class="table table-hover table-bordered" id="sampleTable">
+            			<div class="table_responsive">
+            				<table id="example" class="table table-borderless table-striped table-earning">
+											<br>
 								<thead>
 				                  <tr>
 				                    <th>Kode barang</th>
