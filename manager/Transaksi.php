@@ -6,6 +6,7 @@
             $dataDetail = $trs->edit("detailTransaksi","kd_transaksi",$id);
             $total  = $trs->selectSumWhere("transaksi","sub_total","kd_transaksi='$id'");
             $jumlah_barang = $trs->selectSumWhere("transaksi","jumlah","kd_transaksi='$id'");
+            
       }
 ?>
 <style>
@@ -62,7 +63,7 @@
                   <!-- <div class="tile"> -->
                         <?php if (isset($_GET['id'])): ?>
                         <h4>Struk</h4>
-                        <p>PT Inventory indonesia</p>
+                        <p>CV siapa?</p>
                         <hr>
                         <div class="row">
                               <div class="col-sm-6">Kode Transaksi : <?php echo $id ?></div>
@@ -107,7 +108,7 @@
                         <?php endif ?>
                         <?php if (!isset($_GET['id'])): ?>
                         <h4>Data Semua Transaksi</h4>
-                        <p>PT Inventory Indonesia</p>
+                        <p>CV siapa?</p>
                         <hr>
                         <p class="text-right"><?php echo "Tanggal Cetak : ".date("Y-m-d"); ?></p>
                         <br>

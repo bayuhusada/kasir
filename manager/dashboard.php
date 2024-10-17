@@ -45,9 +45,6 @@
                                                 <span>Pegawai</span>
                                             </div>
                                         </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -62,9 +59,6 @@
                                                 <h2><?= $barang['count'] ?></h2>
                                                 <span>Barang</span>
                                             </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -81,9 +75,6 @@
                                                 <span>Transaksi</span>
                                             </div>
                                         </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -98,9 +89,6 @@
                                                 <h2><?= $assoc1['count']; ?></h2>
                                                 <span>Barang Terjual</span>
                                             </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
                                         </div>
                                     </div>
                                 </div>

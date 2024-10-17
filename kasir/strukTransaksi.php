@@ -36,7 +36,7 @@
             		<div class="card">
             			<div class="card-header">
             				<h4>Struk</h4>
-            				<p>PT Inventory Indonesia</p>
+            				<p></p>
             			</div>
             			<div class="card-body">
             				<div class="row">
