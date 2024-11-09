@@ -79,6 +79,32 @@
             }
             return ['data'=>$data,'jumlah'=>$assocs];
         }
+        public function selectBarangMasuk($table, $column, $startDate, $endDate) {
+            global $con;
+        
+            // Pastikan $column mengacu pada kolom dari tabel utama dalam JOIN
+            $query = "SELECT barang_masuk.*, table_barang.nama_barang 
+                      FROM barang_masuk 
+                      JOIN table_barang ON barang_masuk.kd_barang = table_barang.kd_barang 
+                      WHERE barang_masuk.$column BETWEEN '$startDate' AND '$endDate'";
+        
+            $result = mysqli_query($con, $query);
+        
+            // Tambahkan pengecekan error jika query gagal
+            if (!$result) {
+                die("Error pada query: " . mysqli_error($con));
+            }
+        
+            // Ambil semua hasil query jika berhasil
+            $data = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        
+        
+        
 
         public function AuthUser($sessionUser){
             global $con;
@@ -307,6 +333,58 @@
                 return ['response'=>'negative','alert'=>'Gagal Menghapus Data'];
             }
         }
+
+        public function getBarangKeluarFromDetailTransaksi($startDate = null, $endDate = null) {
+            global $con;
+            // Query dasar
+            $sql = "SELECT kd_pretransaksi, nama_barang, jumlah, tanggal_beli FROM detailTransaksi";
+        
+            // Tambahkan kondisi tanggal jika $startDate dan $endDate diisi
+            if ($startDate && $endDate) {
+                $sql .= " WHERE tanggal_beli BETWEEN '$startDate' AND '$endDate'";
+            }
+        
+            $query = mysqli_query($con, $sql);
+            $data = [];
+            while ($row = mysqli_fetch_assoc($query)) {
+                $data[] = $row;
+            }
+        
+            return $data;
+        }
+        
+        
+
+        // Fungsi untuk Barang Masuk
+        public function tambahBarangMasuk($kd_barang, $jumlah) {
+            global $con; // pastikan koneksi database sudah tersedia
+
+            // Simpan ke tabel barang_masuk
+            $queryMasuk = "INSERT INTO barang_masuk (kd_barang, jumlah) VALUES ('$kd_barang', '$jumlah')";
+            mysqli_query($con, $queryMasuk);
+
+            // Update stok di table_barang
+            $queryUpdateStok = "UPDATE table_barang SET stok_barang = stok_barang + $jumlah WHERE kd_barang = '$kd_barang'";
+            mysqli_query($con, $queryUpdateStok);
+
+            return ['response'=>'positive','alert'=>'Barang Masuk berhasil ditambahkan'];
+        }
+
+        // Fungsi untuk Barang Keluar
+        public function tambahBarangKeluar($kd_barang, $jumlah) {
+            global $con;
+
+            // Simpan ke tabel barang_keluar
+            $queryKeluar = "INSERT INTO barang_keluar (kd_barang, jumlah) VALUES ('$kd_barang', '$jumlah')";
+            mysqli_query($con, $queryKeluar);
+
+            // Update stok di table_barang
+            $queryUpdateStok = "UPDATE table_barang SET stok_barang = stok_barang - $jumlah WHERE kd_barang = '$kd_barang'";
+            mysqli_query($con, $queryUpdateStok);
+
+            return ['response'=>'positive','alert'=>'Barang Keluar berhasil ditambahkan'];
+        }
+
 
     }
 

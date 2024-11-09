@@ -59,6 +59,7 @@
                                             <th>Tanggal Masuk</th>
                                             <th>Harga</th>
                                             <th>Stok</th>
+                                            <th>keterangan</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -75,6 +76,7 @@
                                             <td><?= $ds['tanggal_masuk'] ?></td>
                                             <td><?= number_format($ds['harga_barang']) ?></td>
                                             <td><?= $ds['stok_barang'] ?></td>
+                                            <td><?= $ds['keterangan'] ?></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a href="?page=viewBarangDetail&id=<?php echo $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning"><i class="fa fa-search"></i></a>

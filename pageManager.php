@@ -151,7 +151,7 @@
                         <ul class="list-unstyled navbar__list">
                         	<li>
                             	<a href="?page">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-tachometer-alt"></i>Dashboardor</a>
                         	</li>
                         	<li>
 	                            <a href="?page=kelPegawai">
@@ -199,6 +199,12 @@
                         break;
                     case 'periode':
                         include "manager/BarangPeriode.php";
+                        break;
+                    case 'kelBarangkeluar':
+                        include "manager/barangKeluar.php";
+                        break;
+                    case 'kelBarangMasuk':
+                        include "manager/barangMasuk.php";
                         break;
                     case 'barangHabis':
                         include "manager/BarangHabis.php";
