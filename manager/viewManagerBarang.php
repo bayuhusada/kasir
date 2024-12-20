@@ -17,7 +17,7 @@
             				<a href="manager/export.php" name="export" class="btn btn-success" target="_blank">Export Excel</a>
         					<a href="manager/databarangfull.php" target="_blank" class="btn btn-info">Print</a>
 									<a class="btn btn-danger" href="?page=kelBarangkeluar">barang keluar</a>
-									<a class="btn btn-warning" href="?page=kelBarangkeluar">barang keluar</a>
+									<a class="btn btn-warning" href="?page=kelBarangMasuk">barang Masuk</a>
 									
             			</div>
             			<div class="table_responsive">
