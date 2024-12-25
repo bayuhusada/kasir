@@ -200,7 +200,7 @@
 </div>
 
 <div class="modal fade" id="fajarmodal" tabindex="-1" role="dialog"aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Pilih Barang</h3>
@@ -209,6 +209,9 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari barang...">
+                </div>
                 <table class="table table-hover table-bordered" id="sampleTable">
                     <thead>
                         <tr>
@@ -270,4 +273,17 @@
             $('#kem').val(kembalian);
         })
     })
+</script>
+
+<script>
+    // Script untuk fitur search
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#sampleTable tbody tr');
+
+        rows.forEach(row => {
+            let text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? '' : 'none';
+        });
+    });
 </script>
