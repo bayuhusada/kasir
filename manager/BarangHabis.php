@@ -36,7 +36,7 @@
 		                  <tr>
 		                    <th>Kode barang</th>
 		                    <th>Nama barang</th>
-		                    <th>Merek</th>
+		                    <th>Kategori</th>
 		                    <th>Distributor</th>
 		                    <th>Tanggal Masuk</th>
 		                    <th>Harga</th>

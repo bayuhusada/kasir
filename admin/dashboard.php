@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="text">
                                                 <h2><?= $mer; ?></h2>
-                                                <span>Merek</span>
+                                                <span>Kategori</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">

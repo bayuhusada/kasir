@@ -38,7 +38,7 @@
 	    						<td><?php echo $detail['nama_barang']; ?></td>
 	    					</tr>
 	    					<tr>
-	    						<td>Merek</td>
+	    						<td>Kategori</td>
 	    						<td>:</td>
 	    						<td><?php echo $detail['merek']; ?></td>
 	    					</tr>

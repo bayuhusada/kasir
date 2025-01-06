@@ -152,7 +152,7 @@
                             </li>
                             <li>
                                 <a href="?page=viewMerek">
-                                <i class="fas fa-filter"></i>Merek</a>
+                                <i class="fas fa-filter"></i>Kategori</a>
                             </li>
                         </ul>
                     </nav>

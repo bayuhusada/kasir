@@ -73,7 +73,7 @@
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Data Merek</li>
+                                <li class="list-inline-item">Data Kategori</li>
                             </ul>
                         </div>
                     </div>
@@ -90,12 +90,12 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header" >
-                            <strong class="card-title mb-3">Input Merek</strong>
+                            <strong class="card-title mb-3">Input Kategori</strong>
                         </div>
                         <div class="card-body">
                             <form method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="">Kode Merek</label>
+                                    <label for="">Kode Kategori</label>
                                     <?php if(!isset($_GET['edit'])) : ?>
                                     <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo $autokode; ?>" readonly>
                                     <?php endif ?>
@@ -105,7 +105,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nama Merek</label>
+                                    <label for="">Nama Kategori</label>
                                     <input type="text" class="form-control form-control-sm" name="merek" value="<?php echo @$editData['merek'] ?>">
                                 </div>
                                 <div class="form-group">
@@ -138,7 +138,7 @@
                                <table id="example" class="table table-borderless table-striped table-earning">
                                    <thead>
                                        <tr>
-                                            <th>Kode Merek</th>
+                                            <th>Kode Kategori</th>
                                             <th>Nama</th>
                                             <th>Logo</th>
                                             <th>Action</th>

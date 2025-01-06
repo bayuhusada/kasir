@@ -71,7 +71,7 @@
 
 </head>
 
-<body style="background: url(images/bg.png) no-repeat; background-size: cover;">
+<body style="background: url(images/bg.jpg) no-repeat; background-size: cover;">
     <div class="page-wrapper">
         <div class="">
             <div class="container">

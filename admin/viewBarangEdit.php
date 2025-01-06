@@ -66,7 +66,7 @@
 											<div class="form-group">
 												<label for="">Merek</label>
 												<select name="merek_barang" class="form-control">
-													<option value=" ">Pilih merek</option>
+													<option value=" ">Pilih Kategori</option>
 													<?php foreach($getMerek as $mr) { ?>
 													<?php if ($mr['kd_merek'] == $data['kd_merek']){ ?>
 														<option value="<?= $mr['kd_merek'] ?>" selected><?= $mr['merek'] ?></option>
