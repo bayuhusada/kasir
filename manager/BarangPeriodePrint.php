@@ -28,7 +28,7 @@ $qb = new lsp();
  <div class="row">
     <div class="col-sm-12" style="padding: 50px;">
     <h3>Data Barang Periode</h3>
-    <p>CV Siapa?</p>
+    <p>CV Raihan Sentosa</p>
     </div>
  </div>
 <div class="row">

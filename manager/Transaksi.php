@@ -63,7 +63,7 @@
                   <!-- <div class="tile"> -->
                         <?php if (isset($_GET['id'])): ?>
                         <h4>Struk</h4>
-                        <p>CV siapa?</p>
+                        <p>CV Raihan Sentosa</p>
                         <hr>
                         <div class="row">
                               <div class="col-sm-6">Kode Transaksi : <?php echo $id ?></div>
@@ -108,7 +108,8 @@
                         <?php endif ?>
                         <?php if (!isset($_GET['id'])): ?>
                         <h4>Data Semua Transaksi</h4>
-                        <p>CV siapa?</p>
+                        <img src="images/icon/logo-mini.png" alt="logo" width="5%" height="5%" />
+                        <p>CV Raihan Sentosa</p>
                         <hr>
                         <p class="text-right"><?php echo "Tanggal Cetak : ".date("Y-m-d"); ?></p>
                         <br>

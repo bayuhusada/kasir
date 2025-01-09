@@ -31,7 +31,7 @@
 	<div class="col-sm-12">
     <button class="btn" onclick="window.print()">Print</button>
     <h2>Data seluruh barang</h2>
-    <p>CV siapa?</p>
+    <p>CV Raihan Sentosa</p>
     <p class="text-right">Tanggal Cetak: <?php echo date("Y-m-d"); ?></p>
 			<table border="1" cellspacing="0" width="100%;" cellpadding="20">
                 <thead>

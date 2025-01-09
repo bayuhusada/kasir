@@ -23,7 +23,8 @@
             <div class="row">
             	<div class="col-sm-12" style="background: white; padding: 50px;">
             		<h3>Laporan barang habis</h3>
-					<p>CV siapa</p>
+					<img src="images/icon/logo-mini.png" alt="logo" width="5%" height="5%" />
+					<p>CV Raihan Sentosa</p>
 					<hr>
 					<button class="btn btn-primary"><a href="manager/BarangHabisPrint.php" style="color: white;">Export</a></button>
 					<button class="btn btn-info" onclick="window.print()">Print</button>
