@@ -29,6 +29,7 @@ $qb = new lsp();
     <div class="col-sm-12" style="padding: 50px;">
     <h3>Data Barang Periode</h3>
     <p>CV Raihan Sentosa</p>
+    <img src="../images/icon/bg.jpg" style="border-radius: 50%;" alt="logo" width="5%" />
     </div>
  </div>
 <div class="row">

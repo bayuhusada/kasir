@@ -36,6 +36,8 @@
             		<div class="card">
             			<div class="card-header">
             				<h4>Struk</h4>
+										<img src="images/icon/logo-mini.png" alt="logo" width="5%" height="5%" />
+                    <p>CV Raihan Sentosa</p>
             				<p></p>
             			</div>
             			<div class="card-body">

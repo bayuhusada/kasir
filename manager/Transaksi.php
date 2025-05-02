@@ -63,6 +63,7 @@
                   <!-- <div class="tile"> -->
                         <?php if (isset($_GET['id'])): ?>
                         <h4>Struk</h4>
+                        <img src="images/icon/logo-mini.png" alt="logo" width="5%" height="5%" />
                         <p>CV Raihan Sentosa</p>
                         <hr>
                         <div class="row">
