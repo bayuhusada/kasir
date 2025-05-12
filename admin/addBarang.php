@@ -1,4 +1,6 @@
 <?php 
+ob_start();
+
 if (isset($_GET['status']) && isset($_GET['message'])) {
     $alertType = $_GET['status']; // 'positive' or 'negative'
     $alertMessage = $_GET['message'];
@@ -24,24 +26,27 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
         $merek_barang = $br->validateHtml($_POST['merek_barang']);
         $distributor = $br->validateHtml($_POST['distributor']);
         $harga = $br->validateHtml($_POST['harga']);
+        $harga_beli = $br->validateHtml($_POST['harga_beli']);
         $stok = $br->validateHtml($_POST['stok']);
         $foto = $_FILES['foto'];
         $ket = $_POST['ket'];
 
-        if (empty($kode_barang) || empty($nama_barang) || empty($merek_barang) || empty($distributor) || empty($harga) || empty($stok) || empty($foto['name']) || empty($ket)) {
-            $response = ['response'=>'negative','alert'=>'Lengkapi semua field'];
+         if (empty($kode_barang) || empty($nama_barang) || empty($merek_barang) || empty($distributor) || empty($harga) || empty($harga_beli) || empty($stok) || empty($foto['name']) || empty($ket)) {
+        $response = ['response'=>'negative','alert'=>'Lengkapi semua field'];
         } else {
-            if ($harga < 0 || $stok < 0) {
+            if ($harga < 0 || $harga_beli < 0 || $stok < 0) {
                 $response = ['response'=>'negative','alert'=>'Harga atau stok tidak boleh kurang dari 0'];
             } else {
                 $response = $br->validateImage();
                 if ($response['types'] == "true") {
-                    $value = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$stok','$response[image]','$ket'";
+                    $value = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$harga_beli','$stok','$response[image]','$ket'";
                     $response = $br->insert($table, $value, "?page=viewBarang");
                 }
             } 
-        }
+         }
     }
+
+
 
 // Proses Barang Masuk
 if (isset($_POST['getSimpanMasuk'])) {
@@ -54,11 +59,14 @@ if (isset($_POST['getSimpanMasuk'])) {
         // Panggil fungsi untuk tambah barang masuk
         $response = $br->tambahBarangMasuk($kode_barang, $jumlah);
         
-        // Redirect ke halaman viewBarang.php setelah berhasil
-        header("Location: pageAdmin.php?page=viewBarang&status=" . $response['response'] . "&message=" . urlencode($response['alert']));
-        exit(); // Pastikan untuk menghentikan script setelah redirect
+       echo "<div class='alert alert-{$response['response']}'>
+        {$response['alert']}
+      </div>";
+
     }
 }
+ob_end_flush();
+
 
 
 ?>
@@ -113,6 +121,10 @@ if (isset($_POST['getSimpanMasuk'])) {
                                             <input type="number" class="form-control" name="harga" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="">Harga beli</label>
+                                            <input type="number" class="form-control" name="harga_beli" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="">Stok barang</label>
                                             <input type="number" class="form-control" name="stok" required>
                                         </div>
@@ -134,7 +146,7 @@ if (isset($_POST['getSimpanMasuk'])) {
                         </div>
                     </form>
 
-                    <form method="post" action="prosesBarangMasuk.php"> <!-- Pastikan action mengarah ke file yang benar -->
+    <form method="post" > <!-- Pastikan action mengarah ke file yang benar -->
     <div class="form-group">
         <label for="">Pilih Barang:</label>
         <select name="kode_barang_masuk" class="form-control" required>

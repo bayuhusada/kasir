@@ -40,6 +40,7 @@
                     <th>Distributor</th>
                     <th>Tanggal Masuk</th>
                     <th>Harga</th>
+                    <th>Harga Beli</th>
                     <th>Stok</th>
                   </tr>
                 </thead>
@@ -54,6 +55,7 @@
 						<td><?= $ds['nama_distributor'] ?></td>
 						<td><?= $ds['tanggal_masuk'] ?></td>
 						<td><?= $ds['harga_barang'] ?></td>
+						<td><?= $ds['harga_beli'] ?></td>
 						<td><?= $ds['stok_barang'] ?></td>
                   <?php $no++; } ?>
                 </tbody>

@@ -7,8 +7,6 @@
 		$param1     = $_POST['dateAkhir'];
 		$dataB      = $qb->selectBetween("detailbarang",$whereparam,$param,$param1);
 	}
-
-	
 ?>
 <div class="main-content" style="margin-top: 20px;">
     <div class="section__content section__content--p30">
@@ -47,33 +45,51 @@
 							                <th>Kategori</th>
 							                <th>Distributor</th>
 							                <th>Tanggal Masuk</th>
-							                <th>Harga</th>
+							                <th>Harga Jual</th>
+							                <th>Harga Beli</th>
 							                <th>Stok</th>
 							            </tr>
 							        </thead>
 							        <tbody>
 							        <?php 
-							     if (isset($dataB) && is_array($dataB) && isset($dataB['data']) && is_array($dataB['data']) && count($dataB['data']) > 0) {
+							        if (isset($dataB) && is_array($dataB) && isset($dataB['data']) && is_array($dataB['data']) && count($dataB['data']) > 0) {
 										$no = 1;
-										foreach ($dataB['data'] as $ds) { ?>
-												<tr>
-														<td><?= $ds['kd_barang'] ?></td>
-														<td><?= $ds['nama_barang'] ?></td>
-														<td><?= $ds['merek'] ?></td>
-														<td><?= $ds['nama_distributor'] ?></td>
-														<td><?= $ds['tanggal_masuk'] ?></td>
-														<td><?= number_format($ds['harga_barang']) ?></td>
-														<td><?= $ds['stok_barang'] ?></td>
-												</tr>
-										<?php
-												$no++;
+										$total_harga_beli = 0;
+										$total_harga_jual = 0;
+										foreach ($dataB['data'] as $ds) { 
+											$total_harga_beli += $ds['harga_beli'] * $ds['stok_barang'];
+											$total_harga_jual += $ds['harga_barang'] * $ds['stok_barang'];
+							        ?>
+											<tr>
+												<td><?= $ds['kd_barang'] ?></td>
+												<td><?= $ds['nama_barang'] ?></td>
+												<td><?= $ds['merek'] ?></td>
+												<td><?= $ds['nama_distributor'] ?></td>
+												<td><?= $ds['tanggal_masuk'] ?></td>
+												<td><?= number_format($ds['harga_barang']) ?></td>
+												<td><?= number_format($ds['harga_beli']) ?></td>
+												<td><?= $ds['stok_barang'] ?></td>
+											</tr>
+							        <?php
+											$no++;
 										}
-								} else { ?>
+							        ?>
+							        </tbody>
+							        <tfoot>
 										<tr>
-												<td colspan="7" class="text-center">Tidak ada data</td>
+											<th colspan="5" class="text-right">Total Harga Beli</th>
+											<th colspan="3"><?= number_format($total_harga_beli) ?></th>
+										</tr>
+										<tr>
+											<th colspan="5" class="text-right">Total Harga Jual</th>
+											<th colspan="3"><?= number_format($total_harga_jual) ?></th>
+										</tr>
+									</tfoot>
+							        <?php } else { ?>
+										<tr>
+											<td colspan="8" class="text-center">Tidak ada data</td>
 										</tr>
 							        <?php } ?>
-							        </tbody>
 								</table>
             				</div>
             			</form>

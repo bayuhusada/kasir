@@ -117,22 +117,24 @@
                         <table class="table table-hover table-bordered" width="100%;" align="center">
                                     <thead>
                                           <tr>
-                                                <td>Kode Transaksi</td>
-                                                <td>Nama Penjual</td>
-                                                <td>Jumlah Beli</td>
-                                                <td>Total Harga</td>
-                                                <td>Tanggal Beli</td>
+                                          <td>Kode Transaksi</td>
+                                          <td>Nama Penjual</td>
+                                          <td>Jumlah Beli</td>
+                                          <td>Total Harga</td>
+                                          <td>Keuntungan</td> <!-- Tambah ini -->
+                                          <td>Tanggal Beli</td>
                                           </tr>
-                                    </thead>
-                                    <tbody>
+                                          </thead>
+                                          <tbody>
                                           <?php foreach ($dataTransaksi as $dts): ?>
-                                                <tr>
-                                                      <td><?= $dts['kd_transaksi'] ?></td>
-                                                      <td><?= $dts['nama_user'] ?></td>
-                                                      <td><?= $dts['jumlah_beli'] ?></td>
-                                                      <td><?= "Rp.".number_format($dts['total_harga']).",-" ?></td>
-                                                      <td><?= $dts['tanggal_beli'] ?></td>
-                                                </tr>
+                                          <tr>
+                                                <td><?= $dts['kd_transaksi'] ?></td>
+                                                <td><?= $dts['nama_user'] ?></td>
+                                                <td><?= $dts['jumlah_beli'] ?></td>
+                                                <td><?= "Rp.".number_format($dts['total_harga']).",-" ?></td>
+                                                <td><?= "Rp.".number_format($dts['keuntungan']).",-" ?></td> <!-- Tambah ini -->
+                                                <td><?= $dts['tanggal_beli'] ?></td>
+                                          </tr>
                                           <?php endforeach ?>
                                                 <?php 
                                                 $grand = $trs->selectSum("transaksi","sub_total");

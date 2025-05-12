@@ -58,6 +58,7 @@
                                             <th>Distributor</th>
                                             <th>Tanggal Masuk</th>
                                             <th>Harga</th>
+                                            <th>Harga Beli</th>
                                             <th>Stok</th>
                                             <th>keterangan</th>
                                             <th>Action</th>
@@ -74,7 +75,8 @@
                                             <td><?= $ds['merek'] ?></td>
                                             <td><?= $ds['nama_distributor'] ?></td>
                                             <td><?= $ds['tanggal_masuk'] ?></td>
-                                            <td><?= number_format($ds['harga_barang']) ?></td>
+                                            <td>Rp.<?= number_format($ds['harga_barang']) ?></td>
+                                            <td>Rp.<?= number_format($ds['harga_beli']) ?></td>
                                             <td><?= $ds['stok_barang'] ?></td>
                                             <td><?= $ds['keterangan'] ?></td>
                                             <td class="text-center">

@@ -43,6 +43,7 @@
                     <th>Distributor</th>
                     <th>Tanggal Masuk</th>
                     <th>Harga</th>
+                    <th>Harga Beli</th>
                     <th>Stok</th>
                   </tr>
                 </thead>
@@ -57,15 +58,16 @@
 						<td><?= $ds['nama_distributor'] ?></td>
 						<td><?= $ds['tanggal_masuk'] ?></td>
 						<td><?= number_format($ds['harga_barang']) ?></td>
+						<td><?= number_format($ds['harga_beli']) ?></td>
 						<td><?= $ds['stok_barang'] ?></td>
                   <?php $no++; } ?>
                 </tbody>
                 <tr>
-                	<td colspan="6">Total barang yang di miliki</td>
+                	<td colspan="7">Total barang yang di miliki</td>
                 	<td><?php echo $totbal['sum']; ?></td>
                 </tr>
                 <tr>
-                	<td colspan="6">Jumlah Model Barang</td>
+                	<td colspan="7">Jumlah Model Barang</td>
                 	<td><?php echo $total['count']; ?></td>
                 </tr>
               </table>

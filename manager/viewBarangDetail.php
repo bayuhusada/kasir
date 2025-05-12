@@ -59,6 +59,11 @@
 	    						<td><?php echo "Rp.".number_format($detail['harga_barang'])."-,"; ?></td>
 	    					</tr>
 	    					<tr>
+	    						<td>Harga Beli</td>
+	    						<td>:</td>
+	    						<td><?php echo "Rp.".number_format($detail['harga_beli'])."-,"; ?></td>
+	    					</tr>
+	    					<tr>
 	    						<td>Stok</td>
 	    						<td>:</td>
 	    						<td><?php echo $detail['stok_barang'] ?></td>

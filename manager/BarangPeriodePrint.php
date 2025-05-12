@@ -44,6 +44,7 @@ $qb = new lsp();
                     <th>Distributor</th>
                     <th>Tanggal Masuk</th>
                     <th>Harga</th>
+                    <th>Harga Beli</th>
                     <th>Stok</th>
                 </tr>
             </thead>
@@ -59,6 +60,7 @@ $qb = new lsp();
                     <td><?= $ds['nama_distributor'] ?></td>
                     <td><?= $ds['tanggal_masuk'] ?></td>
                     <td><?= number_format($ds['harga_barang']) ?></td>
+                    <td><?= number_format($ds['harga_beli']) ?></td>
                     <td><?= $ds['stok_barang'] ?></td>
                 </tr>
             <?php $no++; } ?>
