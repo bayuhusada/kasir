@@ -1,13 +1,14 @@
 <?php 
       $trs = new lsp();
       $dataTransaksi = $trs->select("transaksi_terbaru");
-      if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $dataDetail = $trs->edit("detailTransaksi","kd_transaksi",$id);
-            $total  = $trs->selectSumWhere("transaksi","sub_total","kd_transaksi='$id'");
-            $jumlah_barang = $trs->selectSumWhere("transaksi","jumlah","kd_transaksi='$id'");
-            
-      }
+   if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $dataDetail = $trs->edit("detailTransaksi","kd_transaksi",$id);
+    $total  = $trs->selectSumWhere("transaksi","sub_total","kd_transaksi='$id'");
+    $jumlah_barang = $trs->selectSumWhere("transaksi","jumlah","kd_transaksi='$id'");
+    $transaksi = $trs->edit("transaksi", "kd_transaksi", $id)[0]; // 🟢 ambil 1 baris transaksi
+}
+
 ?>
 <style>
       .col-sm-12{
@@ -79,6 +80,7 @@
                                     <td>Nama Barang</td>
                                     <td>Harga Satuan</td>
                                     <td>Jumlah</td>
+                                    <td>Deskripsi</td>
                                     <td>Sub Total</td>
                               </tr>
                               <?php foreach ($dataDetail as $dd): ?>
@@ -87,6 +89,7 @@
                                     <td><?= $dd['nama_barang'] ?></td>
                                     <td><?= $dd['harga_barang'] ?></td>
                                     <td><?= $dd['jumlah'] ?></td>
+                                    <td><?= $transaksi['deskripsi_transaksi'] ?></td>
                                     <td><?= "Rp.".number_format($dd['sub_total']).",-" ?></td>
                               </tr>
                               <?php endforeach ?>
@@ -97,7 +100,7 @@
                                     <td></td>
                               </tr>
                               <tr>
-                                    <td colspan="2"></td>
+                                    <td colspan="3"></td>
                                     <td colspan="2">Total</td>
                                     <td><?php echo "Rp.".number_format($total['sum']).",-" ?></td>
                               </tr>
