@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2025 at 02:01 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.3.21
+-- Generation Time: Mar 16, 2019 at 09:01 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,39 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang_keluar`
---
-
-CREATE TABLE `barang_keluar` (
-  `id` int(11) NOT NULL,
-  `kd_barang` varchar(7) CHARACTER SET latin1 NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `tanggal_keluar` date DEFAULT curdate()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `barang_masuk`
---
-
-CREATE TABLE `barang_masuk` (
-  `id` int(11) NOT NULL,
-  `kd_barang` varchar(7) CHARACTER SET latin1 NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `tanggal_masuk` date DEFAULT curdate()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `barang_masuk`
---
-
-INSERT INTO `barang_masuk` (`id`, `kd_barang`, `jumlah`, `tanggal_masuk`) VALUES
-(1, 'BR001', 20, '2025-09-07');
-
--- --------------------------------------------------------
-
---
 -- Stand-in structure for view `detailbarang`
 -- (See below for the actual view)
 --
@@ -67,7 +35,6 @@ CREATE TABLE `detailbarang` (
 ,`kd_distributor` varchar(7)
 ,`tanggal_masuk` date
 ,`harga_barang` int(7)
-,`harga_beli` int(11)
 ,`stok_barang` int(4)
 ,`gambar` varchar(255)
 ,`keterangan` varchar(200)
@@ -109,7 +76,6 @@ CREATE TABLE `table_barang` (
   `kd_distributor` varchar(7) NOT NULL,
   `tanggal_masuk` date NOT NULL,
   `harga_barang` int(7) NOT NULL,
-  `harga_beli` int(11) NOT NULL,
   `stok_barang` int(4) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `keterangan` varchar(200) NOT NULL
@@ -119,17 +85,11 @@ CREATE TABLE `table_barang` (
 -- Dumping data for table `table_barang`
 --
 
-INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_merek`, `kd_distributor`, `tanggal_masuk`, `harga_barang`, `harga_beli`, `stok_barang`, `gambar`, `keterangan`) VALUES
-('BR001', 'PUZEL TRANSPORTASI', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 50, '1757219924967.jpg', 'PANJANG = 30 , LEBAR = 24 = TINGGI= 0,5 BERAT=340'),
-('BR002', 'PUZEL GEOMETRI', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 38, '1757220080889.jpg', 'PANJANG = 30 , LEBAR = 23 = TINGGI= 0,5 BERAT= 340'),
-('BR003', 'PUZEL ANIMAL', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 5, '1757220203848.jpg', 'PANJANG = 20 , LEBAR = 10,5 TINGGI= 0,5 BERAT= 165'),
-('BR004', 'PUZEL HEWAN TERNAK', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 30, '1757220252361.jpg', 'PANJANG = 30 , LEBAR = 23 = TINGGI= 0,5 BERAT= 340'),
-('BR005', 'PUXEL METAMOFOSIS KUPU ', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 27, '1757220332963.jpg', 'PANJANG = 30 , LEBAR = 24 = TINGGI= 0,5 BERAT=340'),
-('BR006', 'PUZEL METAMORFOSIS KATAK', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 50, '1757220399126.jpg', 'PANJANG = 30 , LEBAR = 23 = TINGGI= 0,5 BERAT= 340'),
-('BR007', 'PUZEL ANATOMI TUBUH', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 123, '1757220440715.jpg', 'PANJANG = 30 , LEBAR = 24 = TINGGI= 0,5 BERAT=340'),
-('BR008', 'PUZEL FACE BOY', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 22, '1757220481431.jpg', 'PANJANG = 30 , LEBAR = 23 = TINGGI= 0,5 BERAT= 340'),
-('BR009', 'PUZEL FACE GIRL', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 123, '1757220520697.jpg', 'PANJANG = 30 , LEBAR = 24 = TINGGI= 0,5 BERAT=340'),
-('BR010', 'PUZEL ANAK PEREMPUAN', 'ME001', 'DS001', '2025-09-07', 45000, 40000, 212, '17572205676.jpg', 'PANJANG = 30 , LEBAR = 23 = TINGGI= 0,5 BERAT= 340');
+INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_merek`, `kd_distributor`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `gambar`, `keterangan`) VALUES
+('BR001', 'Nutrisari', 'ME001', 'DS002', '2018-09-24', 1500, 39, '1537785469748.jpg', 'Tersedia'),
+('BR002', 'Saus ABC', 'ME002', 'DS002', '2018-09-24', 500, 85, '1537761405396.jpg', 'Tersedia'),
+('BR003', 'Indomie Goreng', 'ME003', 'DS002', '2018-09-24', 2500, 66, '1537764343384.jpeg', 'Tersedia'),
+('BR004', 'Kecap', 'ME002', 'DS001', '2018-09-24', 500, 0, '1537788240156.png', 'Tersedia');
 
 -- --------------------------------------------------------
 
@@ -149,7 +109,8 @@ CREATE TABLE `table_distributor` (
 --
 
 INSERT INTO `table_distributor` (`kd_distributor`, `nama_distributor`, `alamat`, `no_telp`) VALUES
-('DS001', 'Pa sugi', 'jln, kenangan', '08213234523');
+('DS001', 'Cahyono', 'Tajur Bogor', '081288819999'),
+('DS002', 'Susanti', 'Bogor', '083812991999');
 
 -- --------------------------------------------------------
 
@@ -168,7 +129,11 @@ CREATE TABLE `table_merek` (
 --
 
 INSERT INTO `table_merek` (`kd_merek`, `merek`, `foto_merek`) VALUES
-('ME001', 'puzzel ', '1757219514203.jpg');
+('ME001', 'Nutrifood', '1537759572977.jpg'),
+('ME002', 'ABC', '1537760002906.png'),
+('ME003', 'Indofood', '1537761246445.jpg'),
+('ME004', 'WEWE', '1539528847974.png'),
+('ME005', 'Barrons', '1548945399328.png');
 
 -- --------------------------------------------------------
 
@@ -189,8 +154,14 @@ CREATE TABLE `table_pretransaksi` (
 --
 
 INSERT INTO `table_pretransaksi` (`kd_pretransaksi`, `kd_transaksi`, `kd_barang`, `jumlah`, `sub_total`) VALUES
-('AN001', 'TR001', 'BR001', 10, 450000),
-('AN002', 'TR001', 'BR003', 12, 540000);
+('AN001', 'TR001', 'BR001', 2, 3000),
+('AN002', 'TR001', 'BR002', 6, 1500),
+('AN003', 'TR002', 'BR003', 2, 5000),
+('AN004', 'TR002', 'BR002', 2, 1000),
+('AN005', 'TR003', 'BR002', 2, 1000),
+('AN006', 'TR003', 'BR003', 2, 5000),
+('AN007', 'TR004', 'BR001', 9, 10500),
+('AN008', 'TR005', 'BR002', 5, 2500);
 
 --
 -- Triggers `table_pretransaksi`
@@ -225,16 +196,19 @@ CREATE TABLE `table_transaksi` (
   `kd_user` varchar(7) NOT NULL,
   `jumlah_beli` int(4) NOT NULL,
   `total_harga` int(8) NOT NULL,
-  `tanggal_beli` date NOT NULL,
-  `deskripsi_transaksi` varchar(50) DEFAULT NULL
+  `tanggal_beli` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `table_transaksi`
 --
 
-INSERT INTO `table_transaksi` (`kd_transaksi`, `kd_user`, `jumlah_beli`, `total_harga`, `tanggal_beli`, `deskripsi_transaksi`) VALUES
-('TR001', 'US003', 22, 990000, '2025-09-07', 'NonSipLah');
+INSERT INTO `table_transaksi` (`kd_transaksi`, `kd_user`, `jumlah_beli`, `total_harga`, `tanggal_beli`) VALUES
+('TR001', 'US003', 8, 4500, '2018-09-25'),
+('TR002', 'US003', 4, 6000, '2018-09-25'),
+('TR003', 'US003', 4, 6000, '2018-09-30'),
+('TR004', 'US003', 9, 10500, '2019-03-16'),
+('TR005', 'US003', 5, 2500, '2019-03-16');
 
 -- --------------------------------------------------------
 
@@ -256,9 +230,9 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`kd_user`, `nama_user`, `username`, `password`, `foto_user`, `level`) VALUES
-('US001', 'Manager', 'manager', 'bWFuYWdlcg==', '1538303665653.png', 'Manager'),
-('US002', 'Admin', 'admin123', 'YWRtaW4xMjM=', '153777087384.png', 'Admin'),
-('US003', 'ngasir', 'kasir123', 'a2FzaXIxMjM=', '1537840377928.png', 'Kasir');
+('US001', 'M. Bayu Pradana', 'manager', 'bWFuYWdlcjEyMw==', '1538303665653.png', 'Manager'),
+('US002', 'Fajar Subeki', 'admin123', 'YWRtaW4xMjM=', '153777087384.png', 'Admin'),
+('US003', 'Dinda Nur Insani', 'kasir123', 'a2FzaXIxMjM=', '1537840377928.png', 'Kasir');
 
 -- --------------------------------------------------------
 
@@ -273,9 +247,6 @@ CREATE TABLE `transaksi` (
 ,`jumlah` int(4)
 ,`sub_total` int(8)
 ,`nama_barang` varchar(40)
-,`deskripsi_transaksi` varchar(50)
-,`tanggal_beli` date
-,`nama_user` varchar(20)
 );
 
 -- --------------------------------------------------------
@@ -291,7 +262,6 @@ CREATE TABLE `transaksi_terbaru` (
 ,`total_harga` int(8)
 ,`tanggal_beli` date
 ,`nama_user` varchar(20)
-,`keuntungan` decimal(43,0)
 );
 
 -- --------------------------------------------------------
@@ -301,7 +271,7 @@ CREATE TABLE `transaksi_terbaru` (
 --
 DROP TABLE IF EXISTS `detailbarang`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS SELECT `tb`.`kd_barang` AS `kd_barang`, `tb`.`nama_barang` AS `nama_barang`, `tb`.`kd_merek` AS `kd_merek`, `tb`.`kd_distributor` AS `kd_distributor`, `tb`.`tanggal_masuk` AS `tanggal_masuk`, `tb`.`harga_barang` AS `harga_barang`, `tb`.`harga_beli` AS `harga_beli`, `tb`.`stok_barang` AS `stok_barang`, `tb`.`gambar` AS `gambar`, `tb`.`keterangan` AS `keterangan`, `tm`.`merek` AS `merek`, `tm`.`foto_merek` AS `foto_merek`, `td`.`nama_distributor` AS `nama_distributor`, `td`.`no_telp` AS `no_telp` FROM ((`table_barang` `tb` join `table_merek` `tm` on(`tb`.`kd_merek` = `tm`.`kd_merek`)) join `table_distributor` `td` on(`tb`.`kd_distributor` = `td`.`kd_distributor`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS  select `table_barang`.`kd_barang` AS `kd_barang`,`table_barang`.`nama_barang` AS `nama_barang`,`table_barang`.`kd_merek` AS `kd_merek`,`table_barang`.`kd_distributor` AS `kd_distributor`,`table_barang`.`tanggal_masuk` AS `tanggal_masuk`,`table_barang`.`harga_barang` AS `harga_barang`,`table_barang`.`stok_barang` AS `stok_barang`,`table_barang`.`gambar` AS `gambar`,`table_barang`.`keterangan` AS `keterangan`,`table_merek`.`merek` AS `merek`,`table_merek`.`foto_merek` AS `foto_merek`,`table_distributor`.`nama_distributor` AS `nama_distributor`,`table_distributor`.`no_telp` AS `no_telp` from ((`table_barang` join `table_merek` on((`table_barang`.`kd_merek` = `table_merek`.`kd_merek`))) join `table_distributor` on((`table_barang`.`kd_distributor` = `table_distributor`.`kd_distributor`))) ;
 
 -- --------------------------------------------------------
 
@@ -310,7 +280,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `detailtransaksi`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailtransaksi`  AS SELECT `table_pretransaksi`.`kd_pretransaksi` AS `kd_pretransaksi`, `table_pretransaksi`.`kd_transaksi` AS `kd_transaksi`, `table_pretransaksi`.`kd_barang` AS `kd_barang`, `table_pretransaksi`.`jumlah` AS `jumlah`, `table_pretransaksi`.`sub_total` AS `sub_total`, `table_barang`.`nama_barang` AS `nama_barang`, `table_barang`.`harga_barang` AS `harga_barang`, `table_transaksi`.`jumlah_beli` AS `jumlah_beli`, `table_transaksi`.`total_harga` AS `total_harga`, `table_transaksi`.`tanggal_beli` AS `tanggal_beli` FROM ((`table_pretransaksi` join `table_barang` on(`table_pretransaksi`.`kd_barang` = `table_barang`.`kd_barang`)) join `table_transaksi` on(`table_transaksi`.`kd_transaksi` = `table_pretransaksi`.`kd_transaksi`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailtransaksi`  AS  select `table_pretransaksi`.`kd_pretransaksi` AS `kd_pretransaksi`,`table_pretransaksi`.`kd_transaksi` AS `kd_transaksi`,`table_pretransaksi`.`kd_barang` AS `kd_barang`,`table_pretransaksi`.`jumlah` AS `jumlah`,`table_pretransaksi`.`sub_total` AS `sub_total`,`table_barang`.`nama_barang` AS `nama_barang`,`table_barang`.`harga_barang` AS `harga_barang`,`table_transaksi`.`jumlah_beli` AS `jumlah_beli`,`table_transaksi`.`total_harga` AS `total_harga`,`table_transaksi`.`tanggal_beli` AS `tanggal_beli` from ((`table_pretransaksi` join `table_barang` on((`table_pretransaksi`.`kd_barang` = `table_barang`.`kd_barang`))) join `table_transaksi` on((`table_transaksi`.`kd_transaksi` = `table_pretransaksi`.`kd_transaksi`))) ;
 
 -- --------------------------------------------------------
 
@@ -319,7 +289,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `transaksi`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transaksi`  AS SELECT `d`.`kd_pretransaksi` AS `kd_pretransaksi`, `d`.`kd_transaksi` AS `kd_transaksi`, `d`.`kd_barang` AS `kd_barang`, `d`.`jumlah` AS `jumlah`, `d`.`sub_total` AS `sub_total`, `d`.`nama_barang` AS `nama_barang`, `t`.`deskripsi_transaksi` AS `deskripsi_transaksi`, `t`.`tanggal_beli` AS `tanggal_beli`, `u`.`nama_user` AS `nama_user` FROM ((`detailtransaksi` `d` join `table_transaksi` `t` on(`d`.`kd_transaksi` = `t`.`kd_transaksi`)) join `table_user` `u` on(`t`.`kd_user` = `u`.`kd_user`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transaksi`  AS  select `table_pretransaksi`.`kd_pretransaksi` AS `kd_pretransaksi`,`table_pretransaksi`.`kd_transaksi` AS `kd_transaksi`,`table_pretransaksi`.`kd_barang` AS `kd_barang`,`table_pretransaksi`.`jumlah` AS `jumlah`,`table_pretransaksi`.`sub_total` AS `sub_total`,`table_barang`.`nama_barang` AS `nama_barang` from (`table_pretransaksi` join `table_barang` on((`table_pretransaksi`.`kd_barang` = `table_barang`.`kd_barang`))) ;
 
 -- --------------------------------------------------------
 
@@ -328,25 +298,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `transaksi_terbaru`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transaksi_terbaru`  AS SELECT `t`.`kd_transaksi` AS `kd_transaksi`, `t`.`kd_user` AS `kd_user`, `t`.`jumlah_beli` AS `jumlah_beli`, `t`.`total_harga` AS `total_harga`, `t`.`tanggal_beli` AS `tanggal_beli`, `u`.`nama_user` AS `nama_user`, (select sum((`dt`.`harga_barang` - `b`.`harga_beli`) * `dt`.`jumlah`) from (`detailtransaksi` `dt` join `table_barang` `b` on(`dt`.`kd_barang` = `b`.`kd_barang`)) where `dt`.`kd_transaksi` = `t`.`kd_transaksi`) AS `keuntungan` FROM (`table_transaksi` `t` join `table_user` `u` on(`t`.`kd_user` = `u`.`kd_user`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transaksi_terbaru`  AS  select `table_transaksi`.`kd_transaksi` AS `kd_transaksi`,`table_transaksi`.`kd_user` AS `kd_user`,`table_transaksi`.`jumlah_beli` AS `jumlah_beli`,`table_transaksi`.`total_harga` AS `total_harga`,`table_transaksi`.`tanggal_beli` AS `tanggal_beli`,`table_user`.`nama_user` AS `nama_user` from (`table_transaksi` join `table_user` on((`table_transaksi`.`kd_user` = `table_user`.`kd_user`))) ;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `barang_keluar`
---
-ALTER TABLE `barang_keluar`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kd_barang` (`kd_barang`);
-
---
--- Indexes for table `barang_masuk`
---
-ALTER TABLE `barang_masuk`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kd_barang` (`kd_barang`);
 
 --
 -- Indexes for table `table_barang`
@@ -388,36 +344,8 @@ ALTER TABLE `table_user`
   ADD PRIMARY KEY (`kd_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `barang_keluar`
---
-ALTER TABLE `barang_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `barang_masuk`
---
-ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `barang_keluar`
---
-ALTER TABLE `barang_keluar`
-  ADD CONSTRAINT `barang_keluar_ibfk_1` FOREIGN KEY (`kd_barang`) REFERENCES `table_barang` (`kd_barang`);
-
---
--- Constraints for table `barang_masuk`
---
-ALTER TABLE `barang_masuk`
-  ADD CONSTRAINT `barang_masuk_ibfk_1` FOREIGN KEY (`kd_barang`) REFERENCES `table_barang` (`kd_barang`);
 
 --
 -- Constraints for table `table_transaksi`

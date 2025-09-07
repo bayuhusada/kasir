@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 
 if (isset($_GET['status']) && isset($_GET['message'])) {
@@ -8,43 +8,43 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
     echo "<div class='alert alert-$alertType'>$alertMessage</div>"; // Menampilkan notifikasi
 }
 
-    $br = new lsp();
-    if ($_SESSION['level'] != "Admin") {
-        header("location:../index.php");
-    }
+$br = new lsp();
+if ($_SESSION['level'] != "Admin") {
+    header("location:../index.php");
+}
 
-    $table = "table_barang";    
-    $getMerek = $br->select("table_merek");
-    $getDistr = $br->select("table_distributor");
-    $autokode = $br->autokode("table_barang","kd_barang","BR");
-    $waktu = date("Y-m-d");
+$table = "table_barang";
+$getMerek = $br->select("table_merek");
+$getDistr = $br->select("table_distributor");
+$autokode = $br->autokode("table_barang", "kd_barang", "BR");
+$waktu = date("Y-m-d");
 
-    // Proses untuk menambah barang baru
-    if (isset($_POST['getSimpan'])) {
-        $kode_barang = $br->validateHtml($_POST['kode_barang']);
-        $nama_barang = $br->validateHtml($_POST['nama_barang']);
-        $merek_barang = $br->validateHtml($_POST['merek_barang']);
-        $distributor = $br->validateHtml($_POST['distributor']);
-        $harga = $br->validateHtml($_POST['harga']);
-        $harga_beli = $br->validateHtml($_POST['harga_beli']);
-        $stok = $br->validateHtml($_POST['stok']);
-        $foto = $_FILES['foto'];
-        $ket = $_POST['ket'];
+// Proses untuk menambah barang baru
+if (isset($_POST['getSimpan'])) {
+    $kode_barang = $br->validateHtml($_POST['kode_barang']);
+    $nama_barang = $br->validateHtml($_POST['nama_barang']);
+    $merek_barang = $br->validateHtml($_POST['merek_barang']);
+    $distributor = $br->validateHtml($_POST['distributor']);
+    $harga = $br->validateHtml($_POST['harga']);
+    $harga_beli = $br->validateHtml($_POST['harga_beli']);
+    $stok = $br->validateHtml($_POST['stok']);
+    $foto = $_FILES['foto'];
+    $ket = $_POST['ket'];
 
-         if (empty($kode_barang) || empty($nama_barang) || empty($merek_barang) || empty($distributor) || empty($harga) || empty($harga_beli) || empty($stok) || empty($foto['name']) || empty($ket)) {
-        $response = ['response'=>'negative','alert'=>'Lengkapi semua field'];
+    if (empty($kode_barang) || empty($nama_barang) || empty($merek_barang) || empty($distributor) || empty($harga) || empty($harga_beli) || empty($stok) || empty($foto['name']) || empty($ket)) {
+        $response = ['response' => 'negative', 'alert' => 'Lengkapi semua field'];
+    } else {
+        if ($harga < 0 || $harga_beli < 0 || $stok < 0) {
+            $response = ['response' => 'negative', 'alert' => 'Harga atau stok tidak boleh kurang dari 0'];
         } else {
-            if ($harga < 0 || $harga_beli < 0 || $stok < 0) {
-                $response = ['response'=>'negative','alert'=>'Harga atau stok tidak boleh kurang dari 0'];
-            } else {
-                $response = $br->validateImage();
-                if ($response['types'] == "true") {
-                    $value = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$harga_beli','$stok','$response[image]','$ket'";
-                    $response = $br->insert($table, $value, "?page=viewBarang");
-                }
-            } 
-         }
+            $response = $br->validateImage();
+            if ($response['types'] == "true") {
+                $value = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$harga_beli','$stok','$response[image]','$ket'";
+                $response = $br->insert($table, $value, "?page=viewBarang");
+            }
+        }
     }
+}
 
 
 
@@ -54,15 +54,14 @@ if (isset($_POST['getSimpanMasuk'])) {
     $jumlah = $br->validateHtml($_POST['jumlah_masuk']);
 
     if (empty($kode_barang) || empty($jumlah)) {
-        $response = ['response'=>'negative','alert'=>'Lengkapi field'];
+        $response = ['response' => 'negative', 'alert' => 'Lengkapi field'];
     } else {
         // Panggil fungsi untuk tambah barang masuk
         $response = $br->tambahBarangMasuk($kode_barang, $jumlah);
-        
-       echo "<div class='alert alert-{$response['response']}'>
+
+        echo "<div class='alert alert-{$response['response']}'>
         {$response['alert']}
       </div>";
-
     }
 }
 ob_end_flush();
@@ -81,7 +80,8 @@ ob_end_flush();
                             <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
                                 <div class="bg-overlay bg-overlay--blue"></div>
                                 <h3>
-                                <i class="zmdi zmdi-account-calendar"></i>Data Barang Baru</h3>
+                                    <i class="zmdi zmdi-account-calendar"></i>Data Barang Baru
+                                </h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -98,8 +98,8 @@ ob_end_flush();
                                             <label for="">Merek</label>
                                             <select name="merek_barang" class="form-control">
                                                 <option value=" ">Pilih merek</option>
-                                                <?php foreach($getMerek as $mr) { ?>
-                                                <option value="<?= $mr['kd_merek'] ?>"><?= $mr['merek'] ?></option>
+                                                <?php foreach ($getMerek as $mr) { ?>
+                                                    <option value="<?= $mr['kd_merek'] ?>"><?= $mr['merek'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -107,8 +107,8 @@ ob_end_flush();
                                             <label for="">Distributor</label>
                                             <select name="distributor" class="form-control">
                                                 <option value=" ">Pilih distributor</option>
-                                                <?php foreach($getDistr as $dr) { ?>
-                                                <option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
+                                                <?php foreach ($getDistr as $dr) { ?>
+                                                    <option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -118,12 +118,16 @@ ob_end_flush();
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="">Harga barang</label>
-                                            <input type="number" class="form-control" name="harga" required>
+                                            <input type="text" class="form-control rupiah" id="harga_display">
+                                            <input type="hidden" name="harga" id="harga">
                                         </div>
+
                                         <div class="form-group">
                                             <label for="">Harga beli</label>
-                                            <input type="number" class="form-control" name="harga_beli" required>
+                                            <input type="text" class="form-control rupiah" id="harga_beli_display">
+                                            <input type="hidden" name="harga_beli" id="harga_beli">
                                         </div>
+
                                         <div class="form-group">
                                             <label for="">Stok barang</label>
                                             <input type="number" class="form-control" name="stok" required>
@@ -146,27 +150,27 @@ ob_end_flush();
                         </div>
                     </form>
 
-    <form method="post" > <!-- Pastikan action mengarah ke file yang benar -->
-    <div class="form-group">
-        <label for="">Pilih Barang:</label>
-        <select name="kode_barang_masuk" class="form-control" required>
-            <option value="">Pilih Barang</option>
-            <?php 
-            // Ambil semua barang untuk ditampilkan
-            $allBarang = $br->select("table_barang");
-            foreach($allBarang as $barang) { ?>
-                <option value="<?= $barang['kd_barang'] ?>"><?= $barang['nama_barang'] ?></option>
-            <?php } ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="">Jumlah Masuk:</label>
-        <input type="number" class="form-control" name="jumlah_masuk" required>
-    </div>
-    <div class="card-footer">
-        <button name="getSimpanMasuk" class="btn btn-primary"><i class="fa fa-download"></i> Simpan Barang Masuk</button>
-    </div>
-</form>
+                    <form method="post"> <!-- Pastikan action mengarah ke file yang benar -->
+                        <div class="form-group">
+                            <label for="">Pilih Barang:</label>
+                            <select name="kode_barang_masuk" class="form-control" required>
+                                <option value="">Pilih Barang</option>
+                                <?php
+                                // Ambil semua barang untuk ditampilkan
+                                $allBarang = $br->select("table_barang");
+                                foreach ($allBarang as $barang) { ?>
+                                    <option value="<?= $barang['kd_barang'] ?>"><?= $barang['nama_barang'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Jumlah Masuk:</label>
+                            <input type="number" class="form-control" name="jumlah_masuk" required>
+                        </div>
+                        <div class="card-footer">
+                            <button name="getSimpanMasuk" class="btn btn-primary"><i class="fa fa-download"></i> Simpan Barang Masuk</button>
+                        </div>
+                    </form>
 
 
 
@@ -175,3 +179,21 @@ ob_end_flush();
         </div>
     </div>
 </div>
+
+
+
+<script>
+function onlyNumber(str) {
+    return str.replace(/[^0-9]/g, '');
+}
+
+document.querySelectorAll('.rupiah').forEach(input => {
+    input.addEventListener('input', function() {
+        let number = onlyNumber(this.value);
+        this.value = new Intl.NumberFormat('id-ID').format(number); // tampilkan dengan titik
+        // set ke hidden input
+        let target = this.id.replace('_display','');
+        document.getElementById(target).value = number;
+    });
+});
+</script>
