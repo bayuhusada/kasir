@@ -11,23 +11,6 @@
 
 
 
-<?php
-// Ambil versi PHP
-$php_version = phpversion();
-
-// Ambil informasi server (opsional)
-$server_software = $_SERVER['SERVER_SOFTWARE'];
-?>
-
-<div class="card shadow-sm border-0 rounded-4 mt-4">
-    <div class="card-body">
-        <h5 class="card-title">Informasi Server</h5>
-        <p><strong>Versi PHP:</strong> <?php echo $php_version; ?></p>
-        <p><strong>Server:</strong> <?php echo $server_software; ?></p>
-    </div>
-</div>
-
-
 <section class="au-breadcrumb m-t-75">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
